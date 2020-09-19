@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<implementation>
+	<functions>
+		function startupPlugin(devNum)
+			luup.log("VeraTelegram Controller Plug-In starting...")
+			VeraTelegram1 = require("L_VeraTelegram1")
+			return VeraTelegram1.startPlugin(devNum)
+		end
+
+		function clearMessage()
+			VeraTelegram1.clearMessage()
+		end
+	</functions>
+	<startup>startupPlugin</startup>
+	<actionList>
+		<action>
+			<serviceId>urn:bochicchio-com:serviceId:VeraTelegram1</serviceId>
+			<name>Send</name>
+			<run>
+				VeraTelegram1.send(lul_device, lul_settings)
+			</run>
+		</action>
+	</actionList>
+</implementation>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+	<specVersion>
+		<major>1</major>
+		<minor>0</minor>
+	</specVersion>
+	<serviceStateTable>
+		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_URI</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_URI2</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_Text</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_ChatID</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_DisableNotification</name>
+			<dataType>boolean</dataType>
+		</stateVariable>
+	</serviceStateTable>
+	<actionList>
+		<action>
+			<name>Send</name>
+			<argumentList>
+				<argument>
+					<name>Text</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_Text</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>ImageUrl</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_URI</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>VideoUrl</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_URI2</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>ChatID</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_ChatID</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>DisableNotification</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_DisableNotification</relatedStateVariable>
+				</argument>
+			</argumentList>
+		</action>
+	</actionList>
+</scpd>
