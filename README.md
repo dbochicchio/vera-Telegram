@@ -53,8 +53,8 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   }, 515)
 ```
 
-Or a silent notification:
-You can send a message:
+Or a silent text notification:
+
 ```
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
