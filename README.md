@@ -72,4 +72,4 @@ In this case, if you're using an old version of AltUI/OpenLoop, just be sure the
 
 # Support
 If you need more help, please post on Vera's forum and tag me (@therealdb).
-https://community.getvera.com/t/alexa-tts-text-to-speech-and-more-plug-in-for-vera/211033/
+https://community.getvera.com/t/telegram-plug-in-to-send-text-images-and-video-notifications/215219
