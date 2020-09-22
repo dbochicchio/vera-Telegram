@@ -14,7 +14,10 @@ To create a new device, got to *Apps*, then *Develop Apps*, then *Create device*
 
 # Configuration
 After installation, ensure to change mandatory variables under your Device, then *Advanced*, then *Variables*.
-Please adjust BotID, BotKey, and DefaultChatID to your settings.
+Please adjust BotID, BotKey, and DefaultChatID to your settings, where:
+- BotID is the first part of the token that token sent by BotFather, before the colon (:);
+- BotKey is the last part of the token that token sent by BotFather, after the colon (:);
+- DefaultChatID is the default ChatID you'll want to send messages to (a Group ID or your own User ID).
 
 ## How to create a bot and get the keys
 In order to run this plug-in, you'll need to create a Telegram Bot.
