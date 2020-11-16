@@ -96,7 +96,7 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   }, 515)
 ```
 
-[See options for tags and formats.](https://core.telegram.org/bots/api#formatting-options).
+[See options for tags and formats.](https://core.telegram.org/bots/api#formatting-options)
 
 # OpenLuup/AltUI
 The device is working and supported under OpenLuup and AltUI.
@@ -104,4 +104,6 @@ In this case, if you're using an old version of AltUI/OpenLoop, just be sure the
 
 # Support
 If you need more help, please post on Vera's forum and tag me (@therealdb).
-https://community.getvera.com/t/telegram-plug-in-to-send-text-images-and-video-notifications/215219
+
+[Go to Vera's forum.](https://community.getvera.com/t/telegram-plug-in-to-send-text-images-and-video-notifications/215219)
+
