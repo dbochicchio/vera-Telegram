@@ -22,6 +22,10 @@
 			<dataType>string</dataType>
 		</stateVariable>
 		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_Format</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
 			<name>A_ARG_TYPE_DisableNotification</name>
 			<dataType>boolean</dataType>
 		</stateVariable>
@@ -49,6 +53,11 @@
 					<name>ChatID</name>
 					<direction>in</direction>
 					<relatedStateVariable>A_ARG_TYPE_ChatID</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>Format</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_Format</relatedStateVariable>
 				</argument>
 				<argument>
 					<name>DisableNotification</name>

@@ -14,7 +14,8 @@ To create a new device, got to *Apps*, then *Develop Apps*, then *Create device*
 
 # Configuration
 After installation, ensure to change mandatory variables under your Device, then *Advanced*, then *Variables*.
-Please adjust BotID, BotKey, and DefaultChatID to your settings.
+Please adjust *BotToken*, and *DefaultChatID* to your settings.
+
 ## How to create a bot and get the keys
 In order to run this plug-in, you'll need to create a Telegram Bot.
 No worries, [it's all covered here](https://core.telegram.org/bots). Go to point [#3]([https://core.telegram.org/bots#3-how-do-i-create-a-bot) for instructions.
@@ -65,6 +66,35 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
 ```
 
 Where *515* is your device ID, ChatID is the chat id (if omitted DefaultChatID variable will be use).
+
+## Formatting messages
+
+You can format your message using HTML or Markdown (default).
+
+Send in HTML (see below for supported tags):
+```
+luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
+  "Send",
+  {
+     Text="This is <b>bold</b>\nHTML message!",
+     Format = "HTML",
+     DisableNotification = false
+  }, 515)
+```
+
+Or in Markdown (see below for supported format):
+
+```
+luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
+  "Send",
+  {
+     Text="This is *bold*\nMarkdown message!",
+     Format = "MarkdownV2",
+     DisableNotification = false
+  }, 515)
+```
+
+[See options for tags and formats.](https://core.telegram.org/bots/api#formatting-options).
 
 # OpenLuup/AltUI
 The device is working and supported under OpenLuup and AltUI.

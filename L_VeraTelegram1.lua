@@ -1,7 +1,7 @@
 module("L_VeraTelegram1", package.seeall)
 
 local _PLUGIN_NAME = "VeraTelegram"
-local _PLUGIN_VERSION = "0.1.0"
+local _PLUGIN_VERSION = "0.2.0"
 
 local debugMode = false
 local openLuup = false
@@ -197,17 +197,30 @@ local function executeCommand(command)
 	end)
 end
 
+local function urlEncode(url)
+	local char_to_hex = function(c)
+		return string.format("%%%02X", string.byte(c))
+	end
+
+	if url == nil then return "" end
+
+	url = url:gsub("\n", "\r\n")
+	url = string.gsub(url, "([^%w _%%%-%.~])", char_to_hex)
+	url = url:gsub(" ", "+")
+	return url
+end
+
 function send(device, settings)
 	D('send(%1)', settings)
 
 	local defaultChatID = getVar(MYSID, "DefaultChatID", "", masterID)
 	local disableNotification = tostring(settings.DisableNotification or "false") == "true"
 	local text = (settings.Text or "Test")
+	local format = (settings.Format or "MarkdownV2")
 
 	local chatID = settings.ChatID or defaultChatID
-	local botID = getVar(MYSID, "BotID", "", masterID)
-	local botKey = getVar(MYSID, "BotKey", "", masterID)
-	local telegramUrl = 'https://api.telegram.org/bot' .. botID .. ':' ..  botKey .. '/'
+	local botToken = getVar(MYSID, "BotToken", "", masterID)
+	local telegramUrl = 'https://api.telegram.org/bot' .. botToken .. '/'
 	
 	-- gif/video or still image
 	if settings.VideoUrl ~= nil or settings.ImageUrl ~= nil then
@@ -232,7 +245,15 @@ function send(device, settings)
 		executeCommand(cmd)
 	else
 		-- text message
-		local cmd = 'curl --data chat_id=' .. chatID .. ' --data-urlencode "text=' .. text .. '" --data disable_notification=' .. tostring(disableNotification).. ' "' .. telegramUrl .. 'sendMessage"'
+		local url = string.format("%ssendMessage?parse_mode=%s&chat_id=%s&text=%s&disable_notification=%s",
+								telegramUrl,
+								format,
+								tostring(chatID),
+								urlEncode(text),
+								tostring(disableNotification)
+					)
+		local cmd = string.format("curl -k -H 'Content-type: application/json' '%s'", url)
+		--local cmd = 'curl -k -H "Content-type: application/json" -G --data "chat_id=' .. chatID .. '" --data "parse_mode=' .. format .. '" --data-urlencode $\'text=' .. text .. '\' --data "disable_notification=' .. tostring(disableNotification).. '" "' .. telegramUrl .. 'sendMessage"'
 		executeCommand(cmd)
 	end
 end
@@ -246,7 +267,6 @@ function startPlugin(devNum)
 	for k,v in pairs(luup.devices) do
 		if v.device_type == "openLuup" then
 			openLuup = true
-			BIN_PATH = "/etc/cmh-ludl/VeraTelegram"
 		end
 	end
 
@@ -254,8 +274,7 @@ function startPlugin(devNum)
 
 	-- init default vars
 	initVar(MYSID, "DebugMode", 0, masterID)
-	initVar(MYSID, "BotID", "yourbotid", masterID)
-	initVar(MYSID, "BotKey", "yourbotkey", masterID)
+	initVar(MYSID, "BotToken", "YourBotToken", masterID)
 	initVar(MYSID, "DefaultChatID", "-1", masterID)
 
 	-- categories
@@ -270,9 +289,20 @@ function startPlugin(devNum)
 	local vers = initVar(MYSID, "CurrentVersion", "0", masterID)
 	if vers ~= _PLUGIN_VERSION then
 		-- new version, let's reload the script again
-		L("New versione detected: reconfiguration in progress")
+		L("New version detected: reconfiguration in progress")
 		setVar(HASID, "Configured", 0, masterID)
 		setVar(MYSID, "CurrentVersion", _PLUGIN_VERSION, masterID)
+
+		-- change config
+		local botID = getVar(MYSID, "BotID", nil, masterID)
+		local botKey = getVar(MYSID, "BotKey", nil, masterID)
+
+		if botID ~= nil and botKey ~= nil then
+			setVar(MYSID, "BotToken", botID .. ':' .. botKey, masterID)
+			setVar(MYSID, "BotID", nil, masterID)
+			setVar(MYSID, "BotKey", nil, masterID)
+			D("Bot configuration upgraded")
+		end
 	end
 	
 	-- check for configured flag and for the script
