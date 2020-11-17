@@ -1,7 +1,7 @@
 module("L_VeraTelegram1", package.seeall)
 
 local _PLUGIN_NAME = "VeraTelegram"
-local _PLUGIN_VERSION = "0.2.0"
+local _PLUGIN_VERSION = "0.21.0"
 
 local debugMode = false
 local openLuup = false
@@ -173,7 +173,6 @@ function os.capture(cmd, raw)
 		), 
 		'[\n\r]+',
 		' ')
-   
    return output
 end
 
@@ -216,12 +215,16 @@ function send(device, settings)
 	local defaultChatID = getVar(MYSID, "DefaultChatID", "", masterID)
 	local disableNotification = tostring(settings.DisableNotification or "false") == "true"
 	local text = (settings.Text or "Test")
-	local format = (settings.Format or "MarkdownV2")
+	local format = (settings.Format or "Markdown")
 
 	local chatID = settings.ChatID or defaultChatID
 	local botToken = getVar(MYSID, "BotToken", "", masterID)
 	local telegramUrl = 'https://api.telegram.org/bot' .. botToken .. '/'
-	
+
+	-- TODO: escape those _ * [ ] ( ) ~ > # + - = | { } . !	
+--	if string.upper(format) == string.upper("MarkdownV2") then
+--	end
+
 	-- gif/video or still image
 	if settings.VideoUrl ~= nil or settings.ImageUrl ~= nil then
 		local ext = settings.ImageUrl ~= nil and '.jpg' or '.gif'
@@ -310,7 +313,7 @@ function startPlugin(devNum)
 	if configured == 0 then
 		setVar(HASID, "Configured", 1, devNum)
 	else
-		D("Engine correctly configured: skipping config")
+		D("Engine already correctly configured: skipping config")
 	end
 
 	-- randomizer

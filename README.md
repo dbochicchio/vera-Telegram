@@ -74,8 +74,8 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   }, 515)
 ```
 
-Where *515* is your device ID, ChatID is the chat id (if omitted DefaultChatID variable will be use).
-Groups are supported as well. Get your group ID and just use it instead of ChatID.
+Where *515* is your device ID, *ChatID* is the chat id (if omitted *DefaultChatID* variable will be use).
+Groups are supported as well. Get your group ID and just use it instead of *ChatID*.
 
 ## Formatting messages
 
@@ -100,10 +100,16 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   "Send",
   {
      Text="This is *bold*\nMarkdown message!",
-     Format = "MarkdownV2",
+     Format = "Markdown",
      DisableNotification = false
   }, 515)
 ```
+
+> *MarkdownV2* needs to escape these special chars: `_ * [ ] ( ) ~ > # + - = | { } . !	`
+>
+> Use it only if you already escaped them in your code (use `\` as prefix, ie `\.`).
+> 
+> *Markdown* is suggested if your want to use this format and don't need advanced formatting.
 
 [See options for tags and formats.](https://core.telegram.org/bots/api#formatting-options)
 
