@@ -17,14 +17,15 @@ To create a new device, got to *Apps*, then *Develop Apps*, then *Create device*
 
 # Configuration
 After installation, ensure to change mandatory variables under your Device, then *Advanced*, then *Variables*.
-Please adjust BotToken and DefaultChatID to your settings.
+Please adjust *BotToken* and *DefaultChatID* to your settings.
 
-## How to create a bot and get the keys
+## How to create a bot and get the token
 In order to run this plug-in, you'll need to create a Telegram Bot.
 
 No worries, [it's all covered here](https://core.telegram.org/bots). Go to point [#3]([https://core.telegram.org/bots#3-how-do-i-create-a-bot) for instructions.
 
-Get your key and be sure the split the ID and Key in the params (they're separated by a colon (*:*))
+Get your token and be sure the edit the *BotToken* variable to it.
+It's suggested to get your group ID or personal ID at this stage. It's covered in the aforementioned guide.
 
 # Use in code
 You can use this plug-in with not code (scenes, Reactor, PLEG) or using code.
