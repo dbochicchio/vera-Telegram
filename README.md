@@ -17,7 +17,7 @@ To create a new device, got to *Apps*, then *Develop Apps*, then *Create device*
 
 # Configuration
 After installation, ensure to change mandatory variables under your Device, then *Advanced*, then *Variables*.
-Please adjust BotID, BotKey, and DefaultChatID to your settings.
+Please adjust BotToken and DefaultChatID to your settings.
 
 ## How to create a bot and get the keys
 In order to run this plug-in, you'll need to create a Telegram Bot.
@@ -63,13 +63,14 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   }, 515)
 ```
 
-Or a silent text notification:
+Or a silent text notification (no audio, but the notification will always appear in your list):
 
 ```
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
      Text="Hello from Vera (Silent)",
+     Format = "Markdown",
      DisableNotification = true
   }, 515)
 ```
