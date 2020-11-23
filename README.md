@@ -70,7 +70,7 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   "Send",
   {
      Text="Hello from Vera (Silent)",
-     Format = "Markdown",
+     Format = "HTML",
      DisableNotification = true
   }, 515)
 ```
@@ -101,7 +101,7 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   "Send",
   {
      Text="This is *bold*\nMarkdown message!",
-     Format = "HTML",
+     Format = "Markdown",
      DisableNotification = false
   }, 515)
 ```
