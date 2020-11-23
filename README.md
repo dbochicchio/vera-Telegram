@@ -101,7 +101,7 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   "Send",
   {
      Text="This is *bold*\nMarkdown message!",
-     Format = "Markdown",
+     Format = "HTML",
      DisableNotification = false
   }, 515)
 ```
