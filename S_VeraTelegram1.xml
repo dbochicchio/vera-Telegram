@@ -2,7 +2,7 @@
 <scpd xmlns="urn:schemas-upnp-org:service-1-0">
 	<specVersion>
 		<major>1</major>
-		<minor>0</minor>
+		<minor>1</minor>
 	</specVersion>
 	<serviceStateTable>
 		<stateVariable sendEvents="no">
@@ -15,6 +15,10 @@
 		</stateVariable>
 		<stateVariable sendEvents="no">
 			<name>A_ARG_TYPE_Text</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>A_ARG_TYPE_Text2</name>
 			<dataType>string</dataType>
 		</stateVariable>
 		<stateVariable sendEvents="no">
@@ -48,6 +52,11 @@
 					<name>VideoUrl</name>
 					<direction>in</direction>
 					<relatedStateVariable>A_ARG_TYPE_URI2</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>UrlParams</name>
+					<direction>in</direction>
+					<relatedStateVariable>A_ARG_TYPE_Text2</relatedStateVariable>
 				</argument>
 				<argument>
 					<name>ChatID</name>

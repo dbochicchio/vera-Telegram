@@ -36,7 +36,7 @@ You can send a text message:
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text="Hello from Vera", 
+     Text = "Hello from Vera", 
      ChatID = whatever
   }, 515)
 ```
@@ -47,8 +47,8 @@ Or an image:
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text="Hello from Vera",
-     ImageUrl="https://media.giphy.com/media/3o84sIqsVAJNfWyjy8/giphy.gif"
+     Text = "Hello from Vera",
+     ImageUrl = "https://media.giphy.com/media/3o84sIqsVAJNfWyjy8/giphy.gif"
   }, 515)
 ```
 
@@ -59,8 +59,8 @@ Or a a gif/video:
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text="Hello from Vera", 
-     VideoUrl="https://media.giphy.com/media/3o84sIqsVAJNfWyjy8/giphy.gif"
+     Text = "Hello from Vera", 
+     VideoUrl = "https://media.giphy.com/media/3o84sIqsVAJNfWyjy8/giphy.gif"
   }, 515)
 ```
 
@@ -70,7 +70,7 @@ Or a silent text notification (no audio, but the notification will always appear
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text="Hello from Vera (Silent)",
+     Text = "Hello from Vera (Silent)",
      Format = "HTML",
      DisableNotification = true
   }, 515)
@@ -78,6 +78,23 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
 
 Where *515* is your device ID, *ChatID* is the chat id (if omitted *DefaultChatID* variable will be use).
 Groups are supported as well. Get your group ID and just use it instead of *ChatID*.
+
+## Protected video/image endpoints and custom CURL parameters (0.22+)
+
+If you need to pass authentication, just use *UrlParams*. It's a standard CURL command line switch, so be sure to test for it before adding it.
+
+Anything CURL supports is supported (authentication headers, user agentc, ect).
+
+```
+luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
+  "Send",
+  {
+     Text = "Hello from Vera", 
+     VideoUrl = "http://192.168.x.x/axis-cgi/admin/param.cgi?action=update&root_Image_I0_Overlay_MaskWindows_M0_Enabled=no"
+     UrlParams = "--digest -u username:password" -- <== curl parameters!
+  }, 515)
+```
+
 
 ## Formatting messages
 

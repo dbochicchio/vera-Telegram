@@ -1,7 +1,7 @@
 module("L_VeraTelegram1", package.seeall)
 
 local _PLUGIN_NAME = "VeraTelegram"
-local _PLUGIN_VERSION = "0.21.0"
+local _PLUGIN_VERSION = "0.22"
 
 local debugMode = false
 local openLuup = false
@@ -237,9 +237,10 @@ function send(device, settings)
 		-- remove Image
 		os.execute('/bin/rm ' .. snapFile)
 
-		-- save locally
+		-- support for authenticated cameras
+		-- save image locally
 		local imageUrl = settings.VideoUrl or settings.ImageUrl
-		local cmd = 'curl -H "Accept-Charset: utf-8" -H "Content-Type: application/x-www-form-urlencoded" -o ' .. snapFile .. ' "' .. imageUrl .. '"'
+		local cmd = 'curl ' .. (settings.UrlParams or "") .. ' -H "Accept-Charset: utf-8" -o ' .. snapFile .. ' "' .. imageUrl .. '"'
 		D('os.execute(%1)', cmd)
 		executeCommand(cmd)
 
