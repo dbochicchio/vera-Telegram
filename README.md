@@ -28,7 +28,7 @@ Get your token and be sure the edit the *BotToken* variable to it.
 It's suggested to get your group ID or personal ID at this stage. It's covered in the aforementioned guide.
 
 # Use in code
-You can use this plug-in with not code (scenes, Reactor, PLEG) or using code.
+You can use this plug-in with no-code solutions (scenes, Reactor, PLEG) or using code.
 
 You can send a text message:
 
