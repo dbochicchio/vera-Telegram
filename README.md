@@ -30,13 +30,13 @@ It's suggested to get your group ID or personal ID at this stage. It's covered i
 # Use in code
 You can use this plug-in with no-code solutions (scenes, Reactor, PLEG) or using code.
 
-You can send a text message:
+Here's how to send a text message:
 
 ```
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text = "Hello from Vera", 
+     Text = "Hello from my home automation system", 
      ChatID = whatever
   }, 515)
 ```
@@ -47,7 +47,7 @@ Or an image:
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text = "Hello from Vera",
+     Text = "Hello from my home automation system",
      ImageUrl = "https://media.giphy.com/media/3o84sIqsVAJNfWyjy8/giphy.gif"
   }, 515)
 ```
@@ -64,19 +64,20 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   }, 515)
 ```
 
-Or a silent text notification (no audio, but the notification will always appear in your list):
+Or a silent text notification (no audio, but the notification will always appear in your notifications):
 
 ```
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text = "Hello from Vera (Silent)",
+     Text = "Hello from my home automation system (Silent)",
      Format = "HTML",
      DisableNotification = true
   }, 515)
 ```
 
-Where *515* is your device ID, *ChatID* is the chat id (if omitted *DefaultChatID* variable will be use).
+Where *515* is your device ID, *ChatID* is the chat id (if omitted *DefaultChatID* variable will be used).
+
 Groups are supported as well. Get your group ID and just use it instead of *ChatID*.
 
 ## Protected video/image endpoints and custom CURL parameters (0.22+)
@@ -89,7 +90,7 @@ Anything CURL supports is supported (authentication headers, user agentc, ect).
 luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1", 
   "Send",
   {
-     Text = "Hello from Vera", 
+     Text = "Hello from my home automation system", 
      VideoUrl = "http://192.168.x.x/axis-cgi/admin/param.cgi?action=update&root_Image_I0_Overlay_MaskWindows_M0_Enabled=no"
      UrlParams = "--digest -u username:password" -- <== curl parameters!
   }, 515)
