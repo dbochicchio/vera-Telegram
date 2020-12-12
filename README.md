@@ -91,7 +91,7 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
   "Send",
   {
      Text = "Hello from my home automation system", 
-     VideoUrl = "http://192.168.x.x/axis-cgi/admin/param.cgi?action=update&root_Image_I0_Overlay_MaskWindows_M0_Enabled=no"
+     ImageUrl = "http://192.168.x.x/axis-cgi/admin/param.cgi?action=update&root_Image_I0_Overlay_MaskWindows_M0_Enabled=no",
      UrlParams = "--digest -u username:password" -- <== curl parameters!
   }, 515)
 ```
