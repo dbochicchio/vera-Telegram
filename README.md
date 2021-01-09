@@ -3,10 +3,10 @@ This plug-in uses [Telegram API](https://core.telegram.org/bots/api) to send pus
 
 It's compatible with both Vera and openLuup.
 
-# AppStore/AltAppStore
+## AppStore/AltAppStore
 This plug-in is available on both AppStore (Vera) and AltAppStore(AltUI/openLuup). Search for it and press *Install*.
 
-# Manual Installation
+## Manual Installation
 To manually install, simply upload the files (minus license and readme, if you go for the full source code) in the release using Vera's feature (Go to *Apps*, then *Develop Apps*, then *Luup files* and select *Upload*) and then create a new device under Vera.
 
 To create a new device, got to *Apps*, then *Develop Apps*, then *Create device*.
@@ -15,11 +15,11 @@ To create a new device, got to *Apps*, then *Develop Apps*, then *Create device*
 - Upnp Implementation Filename/Implementation file: *I_VeraTelegram1.xml*
 - Parent Device: none
 
-# Configuration
+## Configuration
 After installation, ensure to change mandatory variables under your Device, then *Advanced*, then *Variables*.
 Please adjust *BotToken* and *DefaultChatID* to your settings.
 
-## How to create a bot and get the token
+### How to create a bot and get the token
 In order to run this plug-in, you'll need to create a Telegram Bot.
 
 No worries, [it's all covered here](https://core.telegram.org/bots). Go to point [#3]([https://core.telegram.org/bots#3-how-do-i-create-a-bot) for instructions.
@@ -27,7 +27,7 @@ No worries, [it's all covered here](https://core.telegram.org/bots). Go to point
 Get your token and be sure the edit the *BotToken* variable to it.
 It's suggested to get your group ID or personal ID at this stage. It's covered in the aforementioned guide.
 
-# Use in code
+## Use in code
 You can use this plug-in with no-code solutions (scenes, Reactor, PLEG) or using code.
 
 Here's how to send a text message:
@@ -133,13 +133,15 @@ luup.call_action("urn:bochicchio-com:serviceId:VeraTelegram1",
 
 [See options for tags and formats.](https://core.telegram.org/bots/api#formatting-options)
 
-# OpenLuup/AltUI
+## OpenLuup/AltUI
 The device is working and supported under OpenLuup and AltUI.
 
 In this case, if you're using an old version of AltUI/OpenLoop, just be sure the get the base service file from Vera (automatically done if you have the Vera Bridge installed).
 
-# Support
-If you need more help, please post on Vera's forum and tag me (@therealdb).
+## Support
+Before asking for support, please:
+ - change *DebugMode* variable to 1 (on the device itself, not on the master)
+ - repeat your problem and capture logs
+ - logs could be captured via SSH or by navigating to `http://VeraIP/cgi-bin/cmh/log.sh?Device=LuaUPnP`. [More Info](http://wiki.micasaverde.com/index.php/Logs)
 
-
-[Go to Vera's forum.](https://community.getvera.com/t/telegram-plug-in-to-send-text-images-and-video-notifications/215219)
+If you need help, visit [SmartHome.Community](https://smarthome.community/) and tag me (therealdb)./community.getvera.com/t/telegram-plug-in-to-send-text-images-and-video-notifications/215219)

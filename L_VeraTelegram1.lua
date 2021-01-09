@@ -1,3 +1,9 @@
+------------------------------------------------------------------------
+-- Copyright (c) 2020-2021 Daniele Bochicchio
+-- License: MIT License
+-- Source Code: https://github.com/dbochicchio/Vera-Telegram
+------------------------------------------------------------------------
+
 module("L_VeraTelegram1", package.seeall)
 
 local _PLUGIN_NAME = "VeraTelegram"
